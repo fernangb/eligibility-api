@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { ConnectionTypeEnum } from 'src/domain/connections/enums/connection-type.enum';
-import { ConnectionStrategyService } from '../strategies/connection-types/connection-strategy.service';
+import { ConnectionFactory } from '../factories/connection-factory';
 
 @Injectable()
 export class ConnectionService {
-  constructor(private connectionStrategyService: ConnectionStrategyService) {}
+  constructor(private connectionFactory: ConnectionFactory) {}
 
   validate(items: number[], type: ConnectionTypeEnum): boolean {
     const average = this.getAverage(items);
 
-    const strategy = this.connectionStrategyService.getStrategy(type);
+    const strategy = this.connectionFactory.getStrategy(type);
 
     return strategy.validate(average);
   }

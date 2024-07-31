@@ -1,10 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { ConnectionStrategyInterface } from './interfaces/connection-strategy.interface';
+import { ConnectionStrategyInterface } from '../interfaces/connection-strategy.interface';
 
 @Injectable()
-export class BiphasicConnectionStrategyService
-  implements ConnectionStrategyInterface
-{
+export class BiphasicConnectionStrategy implements ConnectionStrategyInterface {
   validate(average: number): boolean {
     const MIN_VALUE = 500;
 

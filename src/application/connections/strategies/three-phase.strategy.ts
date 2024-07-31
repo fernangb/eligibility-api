@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { ConnectionStrategyInterface } from './interfaces/connection-strategy.interface';
+import { ConnectionStrategyInterface } from '../interfaces/connection-strategy.interface';
 
 @Injectable()
-export class ThreePhaseConnectionStrategyService
+export class ThreePhaseConnectionStrategy
   implements ConnectionStrategyInterface
 {
   validate(average: number): boolean {
