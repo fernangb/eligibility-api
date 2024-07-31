@@ -1,8 +1,9 @@
-import { BadRequestException } from '@nestjs/common';
-import { ConnectionTypeEnum } from 'src/domain/connections/enums/connection-type.enum';
-import { CustomerConsumptionClassEnum } from 'src/domain/customer-consumption-classes/enums/customer-consumption-class.enum';
-import { DocumentVO } from 'src/domain/shared/value-objects/document.vo';
-import { TariffModalityEnum } from 'src/domain/tariff-modalities/enums/tariff-modality.enum';
+import { ConnectionTypeEnum } from '../../../domain/connections/enums/connection-type.enum';
+import { CustomerConsumptionClassEnum } from '../../../domain/customer-consumption-classes/enums/customer-consumption-class.enum';
+import { DocumentVO } from '../../../domain/shared/value-objects/document.vo';
+import { TariffModalityEnum } from '../../../domain/tariff-modalities/enums/tariff-modality.enum';
+import { InvalidConsumptionHistoryPeriodException } from '../exceptions/invalid-consumption-history-period.exception';
+import { InvalidConsumptionHistoryValueException } from '../exceptions/invalid-consumption-history-value.exception';
 
 export interface EligibilityEntityProps {
   numeroDoDocumento: string;
@@ -39,15 +40,11 @@ export class EligibilityEntity {
       this.historicoDeConsumo.length < MIN_LENGTH ||
       this.historicoDeConsumo.length > MAX_LENGTH
     )
-      throw new BadRequestException(
-        'Histórico de consumo com período inválido',
-      );
+      throw new InvalidConsumptionHistoryPeriodException();
 
     this.historicoDeConsumo.forEach((value) => {
       if (value < MIN_VALUE || value > MAX_VALUE)
-        throw new BadRequestException(
-          'Histórico de consumo com valor inválido',
-        );
+        throw new InvalidConsumptionHistoryValueException();
     });
   }
 }

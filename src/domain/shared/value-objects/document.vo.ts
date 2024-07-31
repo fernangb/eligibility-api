@@ -14,10 +14,12 @@ export class DocumentVO {
   }
 
   private validate() {
-    const CPF_LENGTH = 11;
-    const CNPJ_LENGTH = 14;
-
-    if (this._value.length !== CPF_LENGTH && this._value.length !== CNPJ_LENGTH)
+    if (!this._value || !this.validateRegex())
       throw new BadRequestException('Documento inválido');
+  }
+
+  private validateRegex() {
+    const regex = /^(\d{11}|\d{14})$/;
+    return regex.test(this._value);
   }
 }
