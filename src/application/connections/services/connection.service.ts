@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { ConnectionTypeEnum } from 'src/domain/connections/enums/connection-type.enum';
-import { ConnectionFactory } from '../factories/connection-factory';
+import { ConnectionTypeEnum } from '../../../domain/connections/enums/connection-type.enum';
+import { ConnectionFactory } from '../factories/connection.factory';
+import { InvalidConnectionAverageException } from '../exceptions/invalid-average.exception';
 
 @Injectable()
 export class ConnectionService {
@@ -14,7 +15,9 @@ export class ConnectionService {
     return strategy.validate(average);
   }
 
-  getAverage(items: number[]): number {
+  private getAverage(items: number[]): number {
+    if (!items.length) throw new InvalidConnectionAverageException();
+
     const sum = items.reduce((acc, value) => acc + value, 0);
     return sum / items.length;
   }

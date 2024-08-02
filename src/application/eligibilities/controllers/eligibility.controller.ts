@@ -10,9 +10,9 @@ export class EligibilityController {
   constructor(private readonly eligibilityService: EligibilityService) {}
 
   @Post()
-  async validate(
+  validate(
     @Body() dto: ValidateEligibilityRequestDto,
-  ): Promise<ValidateEligibilityResponseDto> {
+  ): ValidateEligibilityResponseDto {
     return this.eligibilityService.validate(dto);
   }
 }

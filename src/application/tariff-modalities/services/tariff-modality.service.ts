@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { TariffModalityEnum } from 'src/domain/tariff-modalities/enums/tariff-modality.enum';
+import { TariffModalityEnum } from '../../../domain/tariff-modalities/enums/tariff-modality.enum';
 
 @Injectable()
 export class TariffModalityService {
@@ -12,6 +12,3 @@ export class TariffModalityService {
     return validTariffModalities.includes(tariffModality);
   }
 }
-
-//- Possíveis Valores: Comercial, Residencial, Industrial, Poder Público, e Rural.
-//- Elegíveis: Comercial, Residencial e Industrial.

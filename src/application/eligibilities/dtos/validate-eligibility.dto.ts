@@ -1,7 +1,7 @@
-import { ConnectionTypeEnum } from 'src/domain/connections/enums/connection-type.enum';
-import { CustomerConsumptionClassEnum } from 'src/domain/customer-consumption-classes/enums/customer-consumption-class.enum';
-import { IneligibilityReasonEnum } from 'src/domain/eligibilities/dtos/ineligibility-reason.enum';
-import { TariffModalityEnum } from 'src/domain/tariff-modalities/enums/tariff-modality.enum';
+import { ConnectionTypeEnum } from '../../../domain/connections/enums/connection-type.enum';
+import { CustomerConsumptionClassEnum } from '../../../domain/customer-consumption-classes/enums/customer-consumption-class.enum';
+import { IneligibilityReasonEnum } from '../../../domain/eligibilities/dtos/ineligibility-reason.enum';
+import { TariffModalityEnum } from '../../../domain/tariff-modalities/enums/tariff-modality.enum';
 
 export class ValidateEligibilityRequestDto {
   numeroDoDocumento: string;

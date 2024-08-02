@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConnectionService } from './services/connection.service';
-import { ConnectionFactory } from './factories/connection-factory';
+import { ConnectionFactory } from './factories/connection.factory';
 
 @Module({
   controllers: [],

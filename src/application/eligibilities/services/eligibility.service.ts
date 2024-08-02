@@ -6,8 +6,8 @@ import {
 import { CustomerConsumptionClassService } from '../../customer-consumption-classes/services/customer-consumption-class.service';
 import { TariffModalityService } from '../../tariff-modalities/services/tariff-modality.service';
 import { ConnectionService } from '../../connections/services/connection.service';
-import { IneligibilityReasonEnum } from 'src/domain/eligibilities/dtos/ineligibility-reason.enum';
-import { EligibilityEntity } from 'src/domain/eligibilities/entities/eligibility.entity';
+import { IneligibilityReasonEnum } from '../../../domain/eligibilities/dtos/ineligibility-reason.enum';
+import { EligibilityEntity } from '../../../domain/eligibilities/entities/eligibility.entity';
 
 @Injectable()
 export class EligibilityService {
@@ -71,7 +71,7 @@ export class EligibilityService {
     };
   }
 
-  getAnnualCO2Savings(items: number[]): number {
+  private getAnnualCO2Savings(items: number[]): number {
     const REFERENCE_WEIGHT = 84;
     const REFERENCE_KW = 1000;
 

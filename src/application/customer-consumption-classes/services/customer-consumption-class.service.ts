@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CustomerConsumptionClassEnum } from 'src/domain/customer-consumption-classes/enums/customer-consumption-class.enum';
+import { CustomerConsumptionClassEnum } from '../../../domain/customer-consumption-classes/enums/customer-consumption-class.enum';
 
 @Injectable()
 export class CustomerConsumptionClassService {
@@ -13,6 +13,3 @@ export class CustomerConsumptionClassService {
     return validCustomerConsumptionClasses.includes(customerConsumptionClass);
   }
 }
-
-//- Possíveis Valores: Comercial, Residencial, Industrial, Poder Público, e Rural.
-//- Elegíveis: Comercial, Residencial e Industrial.
