@@ -4,10 +4,8 @@ import { AppModule } from '../dist/app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 export default async (req, res) => {
-  // Cria a aplicação NestJS
   const app = await NestFactory.create(AppModule);
 
-  // Configuração do Swagger
   const config = new DocumentBuilder()
     .setTitle('Eligibility API')
     .setDescription('API to validate customer eligibilities')
@@ -15,15 +13,20 @@ export default async (req, res) => {
     .addTag('Eligibility')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('docs', app, document);
+  SwaggerModule.setup('docs', app, document, {
+    customJs: [
+      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-bundle.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-standalone-preset.min.js',
+    ],
+    customCssUrl: [
+      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.min.css',
+      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-standalone-preset.min.css',
+      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.css',
+    ],
+  });
 
-  // Habilita CORS
   app.enableCors();
-
-  // Inicializa a aplicação
   await app.init();
-
-  // Cria um servidor HTTP e processa as requisições
   const server = createServer(app.getHttpAdapter().getInstance());
   server.emit('request', req, res);
 };
