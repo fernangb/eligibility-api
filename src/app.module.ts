@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { EligibilityModule } from './application/eligibilities/eligibility.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [EligibilityModule],
+  imports: [ConfigModule.forRoot({ isGlobal: true }), EligibilityModule],
   controllers: [],
   providers: [],
 })
