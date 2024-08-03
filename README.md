@@ -12,8 +12,8 @@
 
 ## Documentation
 <p align="center">
-  To test my endpoints, please check this documentation (via Localhost)
-  <a href="http://localhost:3000/docs" target="blank">swagger</a> after you start the application
+  To test my endpoints, please check this
+  <a href="https://customer-eligibility-api.vercel.app/docs" target="blank">documentation</a> after you start the application
 </p>
 
 ## Install dependencies
